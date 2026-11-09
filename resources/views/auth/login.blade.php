@@ -1,8 +1,30 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="authentication-wrapper authentication-basic container-p-y p-4 p-sm-0">
-  <div class="authentication-inner py-6">
+<style>
+  .auth-bg {
+    background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Gambar Pesawat / Bandara */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+  }
+  .auth-bg::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap agar form tetap terbaca */
+    z-index: 0;
+  }
+  .auth-card-container {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+
+<div class="authentication-wrapper authentication-basic container-p-y p-4 p-sm-0 auth-bg">
+  <div class="authentication-inner py-6 auth-card-container">
     <div class="card p-md-7 p-1">
       <div class="app-brand justify-content-center mt-5">
         <a href="/" class="app-brand-link gap-2">
@@ -43,7 +65,9 @@
                          required>
                   <label for="password">Password</label>
                 </div>
-                <span class="input-group-text cursor-pointer"><i class="ri-eye-off-line"></i></span>
+                 <span class="input-group-text cursor-pointer" id="togglePassword">
+                <i class="ri-eye-off-line"></i>
+            </span>
               </div>
             </div>
           </div>
@@ -65,3 +89,4 @@
   </div>
 </div>
 @endsection
+
